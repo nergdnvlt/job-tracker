@@ -62,10 +62,13 @@ describe Contact do
 
   describe 'dependencies' do
     it 'disappears with company' do
-      contact = Contact.new(name: 'Bob Ross',
+      contact = Contact.create(name: 'Bob Ross',
                             position: 'Manager',
                             email: 'bobrob@gmail.com',
                             company: @company)
+
+      expect(Contact.all.size).to eq(1)
+
       @company.destroy
 
       expect(Contact.all.size).to eq(0)
