@@ -8,4 +8,12 @@ describe Category do
       expect(category).to_not be_valid
     end
   end
+
+  describe 'relationships' do
+    it 'has many jobs' do
+      category = Category.new(name: 'Engineering')
+
+      expect(category).to respond_to(:jobs)
+    end
+  end
 end
