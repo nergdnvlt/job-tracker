@@ -1,6 +1,12 @@
-<%= form_for [@company, @job] do |f| %>
+<%= form_for @job do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
+
+  <%= f.label :company %>
+  <%= f.collection_select :company_id, Company.order(:name), :id, :name %>
+
+  <%= f.label :category %>
+  <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
 
   <%= f.label :description %>
   <%= f.text_field :description %>
