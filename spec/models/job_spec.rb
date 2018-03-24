@@ -59,6 +59,15 @@ describe Job do
 
       expect(job).to respond_to(:category)
     end
+
+    it 'has many comments' do
+      job = Job.new(title: 'Software',
+                    level_of_interest: 30,
+                    city: 'Denver',
+                    description: 'Buggers')
+
+      expect(job).to respond_to(:comments)
+    end
   end
 
   describe 'dependencies' do
