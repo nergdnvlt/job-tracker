@@ -18,4 +18,5 @@ All Contacts for <strong><%= @company.name %></strong>
   <ul><%= contact.name %></ul>
   <ul><%= contact.email %></ul>
   <ul><%= contact.position %></ul>
+  <ul><%= link_to 'Edit', edit_company_contact_path(contact.company, contact) %></ul>
 <% end %>
