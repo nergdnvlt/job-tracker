@@ -9,4 +9,10 @@ class Job < ApplicationRecord
 
     cities.map{ |city| [city, where(city: city).size] }
   end
+
+  def self.group_interests
+    select(:level_of_interest)
+      .group(:level_of_interest)
+      .count
+  end
 end

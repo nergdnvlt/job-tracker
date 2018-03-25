@@ -53,7 +53,7 @@ describe Job do
 
     it 'belongs to category' do
       job = Job.new(title: 'Software',
-                    level_of_interest: 30,
+                    level_of_interest: 31,
                     city: 'Denver',
                     description: 'Buggers')
 
@@ -62,7 +62,7 @@ describe Job do
 
     it 'has many comments' do
       job = Job.new(title: 'Software',
-                    level_of_interest: 30,
+                    level_of_interest: 31,
                     city: 'Denver',
                     description: 'Buggers')
 
@@ -74,7 +74,7 @@ describe Job do
     it 'disappears with company' do
       company = Company.create(name: 'Parasite Inc.')
       Job.create(title: 'Software',
-                 level_of_interest: 30,
+                 level_of_interest: 31,
                  city: 'Denver',
                  description: 'Buggers',
                  company: company)
@@ -90,7 +90,7 @@ describe Job do
       company = Company.create(name: 'Parasite Inc.')
       category = Category.create(name: 'Clever')
       Job.create(title: 'Software',
-                 level_of_interest: 30,
+                 level_of_interest: 31,
                  city: 'Denver',
                  company: company,
                  description: 'Buggers',
@@ -110,25 +110,25 @@ describe Job do
         company = Company.create(name: 'Parasites Inc.')
         category = Category.create!(name: 'Test')
         Job.create(title: 'Software',
-                   level_of_interest: 30,
+                   level_of_interest: 31,
                    city: 'Denver',
                    company: company,
                    description: 'Buggers',
                    category: category)
         Job.create(title: 'Software',
-                   level_of_interest: 30,
+                   level_of_interest: 31,
                    city: 'Denver',
                    company: company,
                    description: 'Buggers',
                    category: category)
         Job.create(title: 'Software',
-                   level_of_interest: 30,
+                   level_of_interest: 31,
                    city: 'Denver',
                    company: company,
                    description: 'Buggers',
                    category: category)
         Job.create(title: 'Software',
-                   level_of_interest: 30,
+                   level_of_interest: 31,
                    city: 'Colorado Springs',
                    company: company,
                    description: 'Buggers',

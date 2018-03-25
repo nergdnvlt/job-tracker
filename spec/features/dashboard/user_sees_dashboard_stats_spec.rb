@@ -34,7 +34,7 @@ describe 'user visits the dashboard' do
                   company: company_3,
                   description: 'Dude')
       Job.create!(title: 'Alpine',
-                  level_of_interest: 30,
+                  level_of_interest: 31,
                   city: 'Downtown',
                   company: company_4,
                   description: 'Bad')
@@ -85,7 +85,7 @@ describe 'user visits the dashboard' do
                   company: company_3,
                   description: 'Dude')
       Job.create!(title: 'Alpine',
-                  level_of_interest: 30,
+                  level_of_interest: 31,
                   city: 'Downtown',
                   company: company_4,
                   description: 'Bad')
@@ -95,6 +95,31 @@ describe 'user visits the dashboard' do
       expect(page).to have_content('Los Angeles: 1', count: 1)
       expect(page).to have_content('Denver: 4', count: 1)
       expect(page).to have_content('Downtown: 1', count: 1)
+    end
+
+    it 'groups by level of interest' do
+      company = Company.create!(name: 'Bad Company')
+      Job.create!(title: 'Software',
+                  level_of_interest: 100,
+                  city: 'Los Angeles',
+                  company: company,
+                  description: 'Supercalifragelisticexpialidociouse')
+      Job.create!(title: 'Software',
+                  level_of_interest: 100,
+                  city: 'Denver',
+                  company: company,
+                  description: 'Supercalifragelisticexpialidociouse')
+      Job.create!(title: 'Software',
+                  level_of_interest: 32,
+                  city: 'Denver',
+                  company: company,
+                  description: 'Supercalifragelisticexpialidociouse')
+
+      visit '/dashboard'
+
+      expect(page).to have_content('Interests')
+      expect(page).to have_content('100: 2')
+      expect(page).to have_content('32: 1')
     end
   end
 
@@ -107,7 +132,7 @@ describe 'user visits the dashboard' do
                   city: 'Los Angeles',
                   company: company,
                   description: 'Supercalifragelisticexpialidociouse')
-      Job.create!(title: 'Software',
+      Job.create!(title: 'QA',
                   level_of_interest: 100,
                   city: 'Denver',
                   company: company,
@@ -117,11 +142,43 @@ describe 'user visits the dashboard' do
       click_link 'Los Angeles'
 
       expect(current_url).to eq('http://www.example.com/jobs?location=Los+Angeles')
+      expect(page).to have_content('Software')
+      expect(page).to_not have_content('QA')
 
       visit '/dashboard'
       click_on 'Denver'
 
       expect(current_url).to eq('http://www.example.com/jobs?location=Denver')
+      expect(page).to have_content('QA')
+      expect(page).to_not have_content('Software')
+    end
+
+    it 'click interest' do
+      company = Company.create!(name: 'Bad Company')
+
+      Job.create!(title: 'Software',
+                  level_of_interest: 100,
+                  city: 'Los Angeles',
+                  company: company,
+                  description: 'Supercalifragelisticexpialidociouse')
+      Job.create!(title: 'Software',
+                  level_of_interest: 100,
+                  city: 'Denver',
+                  company: company,
+                  description: 'Supercalifragelisticexpialidociouse')
+      Job.create!(title: 'QA',
+                  level_of_interest: 99,
+                  city: 'Denver',
+                  company: company,
+                  description: 'Supercalifragelisticexpialidociouse')
+
+      visit '/dashboard'
+
+      click_on '100'
+
+      expect(current_url).to eq('http://www.example.com/jobs?interest=100')
+      expect(page).to have_content('Software at Bad Company')
+      expect(page).to_not have_content('QA')
     end
   end
 end
