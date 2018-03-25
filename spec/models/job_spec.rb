@@ -53,7 +53,7 @@ describe Job do
 
     it 'belongs to category' do
       job = Job.new(title: 'Software',
-                    level_of_interest: 30,
+                    level_of_interest: 31,
                     city: 'Denver',
                     description: 'Buggers')
 
@@ -62,7 +62,7 @@ describe Job do
 
     it 'has many comments' do
       job = Job.new(title: 'Software',
-                    level_of_interest: 30,
+                    level_of_interest: 31,
                     city: 'Denver',
                     description: 'Buggers')
 
@@ -74,7 +74,7 @@ describe Job do
     it 'disappears with company' do
       company = Company.create(name: 'Parasite Inc.')
       Job.create(title: 'Software',
-                 level_of_interest: 30,
+                 level_of_interest: 31,
                  city: 'Denver',
                  description: 'Buggers',
                  company: company)
@@ -90,7 +90,7 @@ describe Job do
       company = Company.create(name: 'Parasite Inc.')
       category = Category.create(name: 'Clever')
       Job.create(title: 'Software',
-                 level_of_interest: 30,
+                 level_of_interest: 31,
                  city: 'Denver',
                  company: company,
                  description: 'Buggers',
@@ -101,6 +101,75 @@ describe Job do
       category.destroy
 
       expect(Job.all.size).to eq(0)
+    end
+  end
+
+  describe 'class methods' do
+    describe '.group_location' do
+      it 'returns an array of location cities with the number of jobs it has' do
+        company = Company.create(name: 'Parasites Inc.')
+        category = Category.create!(name: 'Test')
+        Job.create(title: 'Software',
+                   level_of_interest: 31,
+                   city: 'Denver',
+                   company: company,
+                   description: 'Buggers',
+                   category: category)
+        Job.create(title: 'Software',
+                   level_of_interest: 31,
+                   city: 'Denver',
+                   company: company,
+                   description: 'Buggers',
+                   category: category)
+        Job.create(title: 'Software',
+                   level_of_interest: 31,
+                   city: 'Denver',
+                   company: company,
+                   description: 'Buggers',
+                   category: category)
+        Job.create(title: 'Software',
+                   level_of_interest: 31,
+                   city: 'Colorado Springs',
+                   company: company,
+                   description: 'Buggers',
+                   category: category)
+
+
+        expect(Job.group_location).to eq([['Colorado Springs', 1], ['Denver', 3]])
+      end
+    end
+
+    describe '.group_interests' do
+      it 'returns jobs grouped by interest' do
+        company = Company.create(name: 'Parasites Inc.')
+        category = Category.create!(name: 'Test')
+        Job.create(title: 'Software',
+                   level_of_interest: 31,
+                   city: 'Denver',
+                   company: company,
+                   description: 'Buggers',
+                   category: category)
+        Job.create(title: 'Software',
+                   level_of_interest: 31,
+                   city: 'Denver',
+                   company: company,
+                   description: 'Buggers',
+                   category: category)
+        Job.create(title: 'Software',
+                   level_of_interest: 31,
+                   city: 'Denver',
+                   company: company,
+                   description: 'Buggers',
+                   category: category)
+        Job.create(title: 'Software',
+                   level_of_interest: 90,
+                   city: 'Colorado Springs',
+                   company: company,
+                   description: 'Buggers',
+                   category: category)
+
+        expect(Job.group_interests).to eq({31 => 3, 90 => 1})
+      end
     end
   end
 end

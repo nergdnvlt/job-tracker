@@ -7,7 +7,17 @@ Description: <%= @job.description %>
 Level of Interest: <%= @job.level_of_interest %>
 <br>
 
-City: <%= @job.city %>
+City: <%= link_to @job.city, "/jobs?location=#{@job.city}" %>
 <br>
 
 Company: <%= link_to @job.company.name, company_path(@job.company) %>
+
+
+<h5>Add a note about this job:</h5>
+<%= render partial: "form_comment" %>
+
+
+<h5>Comments:</h5>
+<% @comments.each do |comment| %>
+  <p>Date: <%= comment.created_at %> Comment: <%= comment.content %></p>
+<% end %>

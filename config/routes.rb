@@ -1,8 +1,19 @@
 Rails.application.routes.draw do
 
-  resources :companies do
-    resources :jobs
+  root 'dashboard#index'
+
+  resources :categories
+
+  resources :jobs do
+    resources :comments, only: [:create]
   end
+
+  resources :companies do
+    resources :contacts, exclude: %i[show]
+  end
+
+  get '/dashboard' => 'dashboard#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
