@@ -1,5 +1,23 @@
 All Contacts for <strong><%= @company.name %></strong>
 
+<%= form_for [@company, @contact] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :position %>
+  <%= f.text_field :position %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+
+  <%= f.submit %>
+
+<% end %>
+
 <% @company.contacts.each do |contact| %>
   <ul><%= contact.name %></ul>
+  <ul><%= contact.email %></ul>
+  <ul><%= contact.position %></ul>
+  <ul><%= link_to 'Edit', edit_company_contact_path(contact.company, contact) %></ul>
+  <ul><%= link_to 'Delete', "/companies/#{contact.company.id}/contacts/#{contact.id}", method: :delete %></ul>
 <% end %>
