@@ -3,3 +3,7 @@
   <ul><%= company.name %></ul>
   <ul><%= company.average_interest %></ul>
 <% end %>
+
+<% @locations.each do |location| %>
+  <%= link_to location, "/jobs?location=#{location}" %>
+<% end %>
