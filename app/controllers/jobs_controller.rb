@@ -1,10 +1,14 @@
 class JobsController < ApplicationController
+  before_action :set_jobs, only: %i[edit update destroy]
+
   def index
+    return @jobs = job_by_category if category?
+    return @jobs = job_by_location if location?
     @jobs = Job.all
   end
 
   def new
-    @job = Job.new()
+    @job = Job.new
   end
 
   def create
@@ -23,19 +27,25 @@ class JobsController < ApplicationController
     @comments = @job.comments.order(created_at: :desc)
   end
 
-  def edit
-    # implement on your own!
-  end
+  def edit; end
 
   def update
-    # implement on your own!
+    @job.update(job_params)
+
+    redirect_to job_path(params[:job_id])
   end
 
   def destroy
-    # implement on your own!
+    @job.destroy
+
+    redirect_to jobs_path
   end
 
   private
+
+  def set_jobs
+    @job = Job.find(params[:id])
+  end
 
   def job_params
     params.require(:job).permit(:title,
@@ -44,5 +54,22 @@ class JobsController < ApplicationController
                                 :city,
                                 :company_id,
                                 :category_id)
+  end
+
+  def category?
+    return true if params[:category]
+  end
+
+  def location?
+    return true if params[:location]
+  end
+
+  def job_by_location
+    Job.where(city: params[:location].to_s)
+  end
+
+  def job_by_category
+    category = Category.find_by_name(params[:category.to_s])
+    Job.where(category_id: category.id)
   end
 end
