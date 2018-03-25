@@ -1,14 +1,16 @@
-<h3>Top Three Companies</h3>
+<h3>The Big Three</h3>
 <% @companies.each do |company| %>
-  <ul><%= company.name %></ul>
+  <ul><%= link_to company.name, "/companies/#{company.id}" %></ul>
   <ul><%= company.average_interest %></ul>
 <% end %>
 
-<h3>Interests</h3>
+<h3>Jobs by Interest</h3>
 <% @interests.each do |interest| %>
-  <%= link_to interest[0], "jobs?interest=#{interest[0]}" %>: <%= interest[1] %>
+  <%= link_to interest[0], "jobs?interest=#{interest[0]}" %>: <%= interest[1] %><br/>
 <% end %>
 
+<br/>
+<h3>Jobs By City</h3>
 <% @jobs.each do |job| %>
   <%= link_to job[0], "/jobs?location=#{job[0]}" %>: <%= job[1] %>
 <% end %>

@@ -1,18 +1,15 @@
-Title: <%= @job.title %>
-<br>
+<p>Title: <%= @job.title %></p>
 
-Description: <%= @job.description %>
-<br>
+<p>Description: <%= @job.description %></p>
 
-Level of Interest: <%= @job.level_of_interest %>
-<br>
+<p>Level of Interest: <%= @job.level_of_interest %></p>
 
-City: <%= link_to @job.city, "/jobs?location=#{@job.city}" %>
-<br>
+<p>City: <%= link_to @job.city, "/jobs?location=#{@job.city}" %></p>
 
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
+<p>Company: <%= link_to @job.company.name, company_path(@job.company) %></p>
 
-
+<br/>
+<br/>
 <h5>Add a note about this job:</h5>
 <%= render partial: "form_comment" %>
 

@@ -42,7 +42,7 @@ describe 'user visits the dashboard' do
 
       visit '/dashboard'
 
-      expect(page).to have_content('Top Three Companies')
+      expect(page).to have_content('The Big Three')
       expect(page).to have_content(company_1.name)
       expect(page).to have_content(company_2.name)
       expect(page).to have_content(company_3.name)
@@ -117,7 +117,7 @@ describe 'user visits the dashboard' do
 
       visit '/dashboard'
 
-      expect(page).to have_content('Interests')
+      expect(page).to have_content('Jobs by Interest')
       expect(page).to have_content('100: 2')
       expect(page).to have_content('32: 1')
     end
