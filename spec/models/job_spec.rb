@@ -103,4 +103,40 @@ describe Job do
       expect(Job.all.size).to eq(0)
     end
   end
+
+  describe 'class methods' do
+    describe '.group_location' do
+      it 'returns an array of location cities with the number of jobs it has' do
+        company = Company.create(name: 'Parasites Inc.')
+        category = Category.create!(name: 'Test')
+        Job.create(title: 'Software',
+                   level_of_interest: 30,
+                   city: 'Denver',
+                   company: company,
+                   description: 'Buggers',
+                   category: category)
+        Job.create(title: 'Software',
+                   level_of_interest: 30,
+                   city: 'Denver',
+                   company: company,
+                   description: 'Buggers',
+                   category: category)
+        Job.create(title: 'Software',
+                   level_of_interest: 30,
+                   city: 'Denver',
+                   company: company,
+                   description: 'Buggers',
+                   category: category)
+        Job.create(title: 'Software',
+                   level_of_interest: 30,
+                   city: 'Colorado Springs',
+                   company: company,
+                   description: 'Buggers',
+                   category: category)
+
+
+        expect(Job.group_location).to eq([['Colorado Springs', 1], ['Denver', 3]])
+      end
+    end
+  end
 end
