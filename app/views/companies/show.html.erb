@@ -19,4 +19,5 @@ All Contacts for <strong><%= @company.name %></strong>
   <ul><%= contact.email %></ul>
   <ul><%= contact.position %></ul>
   <ul><%= link_to 'Edit', edit_company_contact_path(contact.company, contact) %></ul>
+  <ul><%= link_to 'Delete', "/companies/#{contact.company.id}/contacts/#{contact.id}", method: :delete %></ul>
 <% end %>

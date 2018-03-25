@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-  before_action :set_contact, only: %i[update edit]
+  before_action :set_contact, only: %i[update edit destroy]
 
   def create
     @company = Company.find(params[:company_id])
@@ -16,6 +16,13 @@ class ContactsController < ApplicationController
 
   def update
     @contact.update(contact_params)
+
+    redirect_to company_path(params[:company_id])
+  end
+
+  def destroy
+    @contact.destroy
+
     redirect_to company_path(params[:company_id])
   end
 
