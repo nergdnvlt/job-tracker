@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :companies do
-    resources :contacts, only: [:create]
+    resources :contacts, only: %i[create update edit]
   end
   
   # The priority is based upon order of creation: first created -> highest priority.
