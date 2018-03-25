@@ -1,0 +1,5 @@
+<h3>Top Three Companies</h3>
+<% @companies.each do |company| %>
+  <ul><%= company.name %></ul>
+  <ul><%= company.average_interest %></ul>
+<% end %>
