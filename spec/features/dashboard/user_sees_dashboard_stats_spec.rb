@@ -92,9 +92,9 @@ describe 'user visits the dashboard' do
 
       visit '/dashboard'
 
-      expect(page).to have_link('Los Angeles', count: 1)
-      expect(page).to have_link('Denver', count: 1)
-      expect(page).to have_link('Downtown', count: 1)
+      expect(page).to have_content('Los Angeles: 1', count: 1)
+      expect(page).to have_content('Denver: 4', count: 1)
+      expect(page).to have_content('Downtown: 1', count: 1)
     end
   end
 

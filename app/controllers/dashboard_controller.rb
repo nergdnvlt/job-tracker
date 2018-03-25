@@ -2,6 +2,6 @@ class DashboardController < ApplicationController
 
   def index
     @companies = Company.top_interests
-    @locations = Job.distinct.pluck(:city)
+    @jobs = Job.group_location
   end
 end

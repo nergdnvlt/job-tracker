@@ -3,4 +3,10 @@ class Job < ApplicationRecord
   belongs_to :company
   belongs_to :category, optional: true
   has_many :comments, dependent: :destroy
+
+  def self.group_location
+    cities = distinct.pluck(:city)
+
+    cities.map{ |city| [city, where(city: city).size] }
+  end
 end
