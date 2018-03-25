@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+  before_action :set_contact, only: %i[update edit]
 
   def create
     @company = Company.find(params[:company_id])
@@ -9,9 +10,22 @@ class ContactsController < ApplicationController
     redirect_to company_path(@company)
   end
 
+  def edit
+    @company = Company.find(params[:company_id])
+  end
+
+  def update
+    @contact.update(contact_params)
+    redirect_to company_path(params[:company_id])
+  end
+
   private
 
+  def set_contact
+    @contact = Contact.find(params[:id])
+  end
+
   def contact_params
-    params.require(:contact).permit(:name, :email, :position)
+    params.require(:contact).permit(:name, :email, :position, :company_id)
   end
 end
