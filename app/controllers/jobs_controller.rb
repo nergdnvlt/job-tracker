@@ -4,6 +4,7 @@ class JobsController < ApplicationController
   def index
     return @jobs = job_by_category if category?
     return @jobs = job_by_location if location?
+    return @jobs = job_by_interest if interest?
     @jobs = Job.all
   end
 
@@ -64,6 +65,10 @@ class JobsController < ApplicationController
     return true if params[:location]
   end
 
+  def interest?
+    return true if params[:interest]
+  end
+
   def job_by_location
     Job.where(city: params[:location].to_s)
   end
@@ -71,5 +76,9 @@ class JobsController < ApplicationController
   def job_by_category
     category = Category.find_by_name(params[:category.to_s])
     Job.where(category_id: category.id)
+  end
+
+  def job_by_interest
+    Job.where(level_of_interest: params[:interest].to_s)
   end
 end

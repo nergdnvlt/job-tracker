@@ -3,3 +3,12 @@
   <ul><%= company.name %></ul>
   <ul><%= company.average_interest %></ul>
 <% end %>
+
+<h3>Interests</h3>
+<% @interests.each do |interest| %>
+  <%= link_to interest[0], "jobs?interest=#{interest[0]}" %>: <%= interest[1] %>
+<% end %>
+
+<% @jobs.each do |job| %>
+  <%= link_to job[0], "/jobs?location=#{job[0]}" %>: <%= job[1] %>
+<% end %>
