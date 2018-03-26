@@ -11,15 +11,33 @@ describe 'deleting a contact' do
 
       visit company_path(company)
 
-      expect(page).to have_content('Rango')
-      expect(page).to have_content('rango@parasites.inc.com')
-      expect(page).to have_content('Sanitation Engineer')
+      expect(page).to have_content(contact.name)
+      expect(page).to have_content(contact.email)
+      expect(page).to have_content(contact.position)
 
       click_on 'Delete'
 
-      expect(page).to_not have_content('Rango')
-      expect(page).to_not have_content('rango@parasites.inc.com')
-      expect(page).to_not have_content('Sanitation Engineer')
+      expect(page).to_not have_content(contact.name)
+      expect(page).to_not have_content(contact.email)
+      expect(page).to_not have_content(contact.position)
+    end
+
+    it 'they can delete a contact' do
+      company = Company.create!(name: 'Parasites Inc.')
+      contact = Contact.create!(name: 'Rango',
+                                email: 'rango@parasites.inc.com',
+                                position: 'Sanitation Engineer',
+                                company: company)
+
+      visit company_path(company)
+
+      expect(page).to have_content(contact.name)
+      expect(page).to have_content(contact.email)
+      expect(page).to have_content(contact.position)
+
+      click_on 'Delete'
+
+      expect(page).to have_content('Contact Deleted!')
     end
   end
 end

@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
     @company = Company.find(params[:company_id])
     @contact = Contact.new(contact_params)
     @contact.company = @company
-    @contact.save
+    flash.notice = "#{@contact.name} Contact Created!" if @contact.save
 
     redirect_to company_path(@company)
   end
@@ -15,14 +15,16 @@ class ContactsController < ApplicationController
   end
 
   def update
-    @contact.update(contact_params)
-
-    redirect_to company_path(params[:company_id])
+    if @contact.update(contact_params)
+      flash.notice = "Contact #{@contact.name} Updated!"
+      redirect_to company_path(params[:company_id])
+    else
+      render :edit
+    end
   end
 
   def destroy
-    @contact.destroy
-
+    flash.notice = 'Contact Deleted!' if @contact.destroy
     redirect_to company_path(params[:company_id])
   end
 
