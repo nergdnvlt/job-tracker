@@ -42,6 +42,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'launchy'
   gem 'pry'
+  gem 'bootstrap-sass'
 end
 
 group :development do
