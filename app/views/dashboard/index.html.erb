@@ -10,7 +10,11 @@
 <% end %>
 
 <br/>
-<h3>Jobs By City</h3>
+
+<%= link_to 'Sort Jobs by Cities', "/jobs?sort=city" %>
+<%= link_to 'Sort Jobs by Interest Level', "/jobs?sort=interest" %>
+
+<h3>Jobs in City</h3>
 <% @jobs.each do |city, quantity| %>
   <%= link_to city, "/jobs?location=#{city}" %>: <%= quantity %>
 <% end %>
