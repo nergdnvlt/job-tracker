@@ -13,6 +13,7 @@ class Job < ApplicationRecord
   def self.group_interests
     select(:level_of_interest)
       .group(:level_of_interest)
+      .order(level_of_interest: :desc)
       .count
   end
 end
