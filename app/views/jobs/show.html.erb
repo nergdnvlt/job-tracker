@@ -8,6 +8,9 @@
 
 <p>Company: <%= link_to @job.company.name, company_path(@job.company) %></p>
 
+<%= link_to "Edit", edit_job_path(@job) %>
+<%= link_to "Delete", job_path(@job), method: "delete" %>
+
 <br/>
 <br/>
 <h5>Add a note about this job:</h5>
