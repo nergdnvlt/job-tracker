@@ -22,5 +22,4 @@ describe 'User edits an existing company' do
 
     expect(page).to have_content('EA Sports Updated!')
   end
-
 end
