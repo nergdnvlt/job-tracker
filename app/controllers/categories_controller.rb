@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      flash[:success] = "#{@category.name} added!"
+      flash[:success] = "#{@category.name} Category Added!"
       redirect_to category_path(@category)
     else
       render :new
@@ -20,14 +20,12 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    @category.update(category_params)
-
+    flash[:success] = 'Category Updated!' if @category.update(category_params)
     redirect_to categories_path
   end
 
   def destroy
-    @category.destroy
-
+    flash[:success] = 'Category Deleted!' if @category.destroy
     redirect_to categories_path
   end
 
@@ -40,5 +38,4 @@ class CategoriesController < ApplicationController
   def category_params
     params.require(:category).permit(:name)
   end
-
 end
