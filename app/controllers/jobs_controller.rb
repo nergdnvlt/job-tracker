@@ -33,7 +33,7 @@ class JobsController < ApplicationController
   def update
     @job.update(job_params)
 
-    redirect_to job_path(params[:job_id])
+    redirect_to job_path(params[:id])
   end
 
   def destroy
