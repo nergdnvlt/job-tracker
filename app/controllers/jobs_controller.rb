@@ -5,6 +5,8 @@ class JobsController < ApplicationController
     return @jobs = job_by_category if category?
     return @jobs = job_by_location if location?
     return @jobs = job_by_interest if interest?
+    return @jobs = Job.order(:city) if params[:sort] == 'city'
+    return @jobs = Job.order(level_of_interest: :desc) if params[:sort] == 'interest'
     @jobs = Job.all
   end
 

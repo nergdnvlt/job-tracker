@@ -5,12 +5,16 @@
 <% end %>
 
 <h3>Jobs by Interest</h3>
-<% @interests.each do |interest| %>
-  <%= link_to interest[0], "jobs?interest=#{interest[0]}" %>: <%= interest[1] %><br/>
+<% @interests.each do |interest, quantity| %>
+  <%= link_to interest, "jobs?interest=#{interest}" %>: <%= quantity %><br/>
 <% end %>
 
 <br/>
-<h3>Jobs By City</h3>
-<% @jobs.each do |job| %>
-  <%= link_to job[0], "/jobs?location=#{job[0]}" %>: <%= job[1] %>
+
+<%= link_to 'Sort Jobs by Cities', "/jobs?sort=city" %>
+<%= link_to 'Sort Jobs by Interest Level', "/jobs?sort=interest" %>
+
+<h3>Jobs in City</h3>
+<% @jobs.each do |city, quantity| %>
+  <%= link_to city, "/jobs?location=#{city}" %>: <%= quantity %>
 <% end %>
