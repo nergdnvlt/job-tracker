@@ -7,7 +7,7 @@ describe 'User sees all categories' do
 
     visit categories_path
 
-    expect(page).to have_content('All Categories')
+    expect(page).to have_content('Categories')
     expect(page).to have_content(category1.name)
     expect(page).to have_content(category2.name)
   end

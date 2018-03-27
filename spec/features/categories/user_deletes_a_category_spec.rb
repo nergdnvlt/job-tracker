@@ -5,16 +5,17 @@ describe 'User deletes a categories' do
     category = Category.create!(name: 'Sports')
 
     visit categories_path
-    click_on 'Delete'
+    find('.delete').click
 
     expect(page).to_not have_content(category.name)
   end
 
   scenario 'a user deletes a category and sees flash' do
-    Category.create!(name: 'Sports')
+    Category.create!(name: 'Rodeo')
 
     visit categories_path
-    click_on 'Delete'
+
+    find('.delete').click
 
     expect(page).to have_content('Category Deleted!')
   end
