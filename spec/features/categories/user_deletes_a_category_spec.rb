@@ -14,7 +14,7 @@ describe 'User deletes a categories' do
     Category.create!(name: 'Rodeo')
 
     visit categories_path
-    # click_on 'Delete'
+
     find('.delete').click
 
     expect(page).to have_content('Category Deleted!')
