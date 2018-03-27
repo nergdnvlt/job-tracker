@@ -1,3 +1,6 @@
+
+<br>
+<br>
 <p>Title: <%= @job.title %></p>
 
 <p>Description: <%= @job.description %></p>
@@ -8,8 +11,15 @@
 
 <p>Company: <%= link_to @job.company.name, company_path(@job.company) %></p>
 
-<%= link_to "Edit", edit_job_path(@job) %>
-<%= link_to "Delete", job_path(@job), method: "delete" %>
+<p>
+  <%= link_to edit_job_path(@job), class: "btn btn-default edit" do %>
+    <span class="glyphicon glyphicon-edit"></span>
+  <% end %>
+
+  <%= link_to job_path(@job), method: 'delete', class: "btn btn-default delete" do %>
+    <span class="glyphicon glyphicon-trash"></span>
+  <% end %>
+</p>
 
 <br/>
 <br/>
