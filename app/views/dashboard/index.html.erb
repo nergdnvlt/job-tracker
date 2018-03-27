@@ -24,9 +24,11 @@
 </div>
 
 <ul class="nav nav-link nav-stacked">
-  <% @interests.each do |interest, quantity| %>
+  <% @interests.each_with_index do |interest, index| %>
 
-    <li class="container active"><%= link_to "#{interest}: #{quantity}", "jobs?interest=#{interest}" %></li>
+    <li class="container active">
+      <%= link_to "#{index + 1} Star(s): #{interest.size}", "jobs?interest=#{index + 1}" %>
+    </li>
 
   <% end %>
 </ul>
@@ -39,7 +41,6 @@
     <%= link_to 'See All Jobs by Cities', "/jobs?sort=city" %>
   </div>
 </div>
-
 
 <ul class="nav nav-link nav-stacked">
   <% @jobs.each do |city, quantity| %>

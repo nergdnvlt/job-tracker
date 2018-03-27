@@ -41,7 +41,7 @@ describe 'User uses links to navigatge from root' do
                                  company: company2)
 
     visit '/'
-    click_on job2.level_of_interest
+    click_on '5 Star(s):'
 
     expect(current_path).to eq(jobs_path)
     expect(page).to have_content(job2.title)
