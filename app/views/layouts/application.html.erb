@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>JobTracker</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, class: name %>
-  <% end %>
-  <nav>
-    <%= link_to 'Home', root_path %>
-    <%= link_to 'Categories', categories_path %>
-    <%= link_to 'Companies', companies_path %>
-    <%= link_to 'Jobs', jobs_path %>
-  </nav>
-  <p class="flash"><%= flash.notice %></p>
-  <%= yield %>
 
-</body>
+  <head>
+    <title>JobTracker</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="background-img">
+      </div>
+
+      <nav class="main-nav">
+        <%= link_to 'Home', root_path %>
+        <%= link_to 'Categories', categories_path %>
+        <%= link_to 'Companies', companies_path %>
+        <%= link_to 'Jobs', jobs_path %>
+      </nav>
+    </header>
+
+    <p class="flash"><%= flash.notice %></p>
+    <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: name %>
+    <% end %>
+    <%= yield %>
+
+  </body>
 </html>
