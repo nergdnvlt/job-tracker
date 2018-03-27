@@ -11,14 +11,31 @@
   <body>
 
     <header>
+
       <div class="background-img">
       </div>
 
-      <nav class="main-nav">
-        <%= link_to 'Home', root_path %>
-        <%= link_to 'Categories', categories_path %>
-        <%= link_to 'Companies', companies_path %>
-        <%= link_to 'Jobs', jobs_path %>
+      <br>
+      <nav id="main-nav">
+        <button class="btn btn-default btn-lg"> <%= link_to root_path class: "btn btn-default go_home" do %>
+            <span class="glyphicon glyphicon-home"></span> &nbsp; Home
+          <% end %>
+        </button>
+        <button class="btn btn-default btn-lg home"> <%= link_to categories_path class: "btn btn-default go_categories" do %>
+            <span class="glyphicon glyphicon-book"></span> &nbsp; Categories Main
+          <% end %>
+        </button>
+        <button class="btn btn-default btn-lg"> <%= link_to companies_path class: "btn btn-default go_companies" do %>
+            <span class="glyphicon glyphicon-briefcase"></span> &nbsp; Companies Main
+          <% end %>
+        </button>
+        <button class="btn btn-default btn-lg"> <%= link_to jobs_path class: "btn btn-default go_jobs" do %>
+            <span class="glyphicon glyphicon-list-alt"></span> &nbsp; Job Main
+          <% end %>
+        </button>
+        <!-- <%= link_to 'Categories', categories_path %> -->
+        <!-- <%= link_to 'Companies', companies_path %> -->
+        <!-- <%= link_to 'Jobs', jobs_path %> -->
       </nav>
     </header>
 
