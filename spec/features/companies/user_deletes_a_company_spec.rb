@@ -6,9 +6,9 @@ describe "User deletes existing company" do
     visit companies_path
 
     within(".company_#{company.id}") do
-      click_link "Delete"
+      find('.delete').click
     end
 
-    expect(page).to have_content("ESPN was successfully deleted!")
+    expect(page).to have_content('ESPN was successfully deleted!')
   end
 end

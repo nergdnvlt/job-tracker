@@ -15,7 +15,7 @@ describe 'deleting a contact' do
       expect(page).to have_content(contact.email)
       expect(page).to have_content(contact.position)
 
-      click_on 'Delete'
+      find('.delete').click
 
       expect(page).to_not have_content(contact.name)
       expect(page).to_not have_content(contact.email)
@@ -35,7 +35,7 @@ describe 'deleting a contact' do
       expect(page).to have_content(contact.email)
       expect(page).to have_content(contact.position)
 
-      click_on 'Delete'
+      find('.delete').click
 
       expect(page).to have_content('Contact Deleted!')
     end

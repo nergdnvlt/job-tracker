@@ -15,7 +15,7 @@ describe 'editing a contact' do
       expect(page).to have_content('rango@parasites.inc.com')
       expect(page).to have_content('Sanitation Engineer')
 
-      click_on 'Edit'
+      find('.edit').click
 
       expect(current_path).to eq("/companies/#{contact.company.id}/contacts/#{contact.id}/edit")
 
@@ -44,7 +44,7 @@ describe 'editing a contact' do
       expect(page).to have_content('rango@parasites.inc.com')
       expect(page).to have_content('Sanitation Engineer')
 
-      click_on 'Edit'
+      find('.edit').click
 
       expect(current_path).to eq("/companies/#{contact.company.id}/contacts/#{contact.id}/edit")
 

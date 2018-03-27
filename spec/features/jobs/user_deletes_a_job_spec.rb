@@ -12,7 +12,7 @@ describe 'User deletes existing job' do
 
     visit jobs_path
 
-    click_link 'Delete'
+    find('.delete').click
 
     expect(page).to_not have_content(job.title)
   end
@@ -27,7 +27,7 @@ describe 'User deletes existing job' do
                                category: category)
 
     visit job_path(job)
-    click_link 'Delete'
+    find('.delete').click
 
     expect(page).to_not have_content(job.title)
   end
@@ -42,7 +42,7 @@ describe 'User deletes existing job' do
                                category: category)
 
     visit job_path(job)
-    click_link 'Delete'
+    find('.delete').click
 
     expect(page).to have_content('Job Deleted')
   end
