@@ -13,4 +13,3 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
-// When the user scrolls the page, execute myFunction
