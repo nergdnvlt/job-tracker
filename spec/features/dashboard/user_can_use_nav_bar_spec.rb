@@ -18,7 +18,7 @@ describe 'User uses links to navigatge to the root' do
                                  company: company2)
 
     visit '/'
-    click_on 'Home'
+    click_link('Home')
 
     expect(current_path).to eq('/')
     expect(page).to have_content(company1.name)
@@ -41,7 +41,7 @@ describe 'User uses links to navigatge to the root' do
                                  company: company2)
 
     visit '/'
-    click_on 'Categories'
+    click_link('Categories Main')
 
     expect(current_path).to eq(categories_path)
     expect(page).to have_content(category1.name)
@@ -65,7 +65,7 @@ describe 'User uses links to navigatge to the root' do
                                  company: company2)
 
     visit '/'
-    click_on 'Companies'
+    click_link('Companies Main')
 
     expect(current_path).to eq(companies_path)
     expect(page).to have_content(company1.name)
@@ -89,7 +89,7 @@ describe 'User uses links to navigatge to the root' do
                                  company: company2)
 
     visit '/'
-    click_on 'Jobs'
+    click_link('Job Main')
 
     expect(current_path).to eq(jobs_path)
     expect(page).to have_content(job1.title)

@@ -15,7 +15,7 @@
   text-align: left;
 }
 
-.category_cont h3 {
+.category_cont h2 {
   margin-top: 40px;
   margin-bottom: 40px;
 }
@@ -24,14 +24,15 @@
   display: inline-block;
 }
 
-.main-nav {
+#main-nav {
   display: flex;
   justify-content: space-around;
   height: 75px;
   align-items: center;
-  background-color: #EEEEEE;
+  background-color: #FFFFFF;
   font-weight: bold;
   font-size: 20px;
+  overflow: hidden;
 }
 
 a {

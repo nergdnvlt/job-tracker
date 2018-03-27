@@ -12,7 +12,7 @@ describe 'User edits a job' do
 
     visit jobs_path
 
-    click_link 'Edit'
+    find('.edit').click
 
     fill_in 'job[title]', with: 'Superhero'
     fill_in 'job[description]', with: 'Saving people'
@@ -37,7 +37,7 @@ describe 'User edits a job' do
 
     visit job_path(job)
 
-    click_link 'Edit'
+    find('.edit').click
 
     fill_in 'job[title]', with: 'Bobber man'
     fill_in 'job[description]', with: 'Riding bikes'
@@ -62,7 +62,7 @@ describe 'User edits a job' do
 
     visit job_path(job)
 
-    click_link 'Edit'
+    find('.edit').click
 
     fill_in 'job[title]', with: 'Bobber Man'
     fill_in 'job[description]', with: 'Riding bikes'

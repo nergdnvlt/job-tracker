@@ -1,4 +1,4 @@
-All Contacts for <strong><%= @company.name %></strong>
+<h2>All Contacts for <strong><%= @company.name %></strong></h2>
 
 <%= form_for [@company, @contact] do |f| %>
   <%= f.label :name %>
@@ -14,10 +14,15 @@ All Contacts for <strong><%= @company.name %></strong>
 
 <% end %>
 
-<% @company.contacts.each do |contact| %>
-  <ul><%= contact.name %></ul>
-  <ul><%= contact.email %></ul>
-  <ul><%= contact.position %></ul>
-  <ul><%= link_to 'Edit', edit_company_contact_path(contact.company, contact) %></ul>
-  <ul><%= link_to 'Delete', "/companies/#{contact.company.id}/contacts/#{contact.id}", method: :delete %></ul>
-<% end %>
+<ul><% @company.contacts.each do |contact| %>
+  <li>Name: <%= contact.name %></li>
+  <li>Email: <%= contact.email %></li>
+  <li>Position: <%= contact.position %></li>
+  <p><%= link_to edit_company_contact_path(contact.company, contact), class: "btn btn-default edit" do %>
+      <span class="glyphicon glyphicon-edit"></span>
+      <% end %>
+      <%= link_to "/companies/#{contact.company.id}/contacts/#{contact.id}", method: 'delete', class: "btn btn-default delete" do %>
+        <span class="glyphicon glyphicon-trash"></span>
+      <% end %>
+  </p>
+<% end %></ul>

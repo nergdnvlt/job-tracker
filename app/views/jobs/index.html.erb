@@ -1,9 +1,26 @@
-All Jobs
+<h2>All Jobs</h2>
+
+<br>
+
+<button class="btn btn-default btn-sm"> <%= link_to new_job_path class: "btn btn-default add" do %>
+    <span class="glyphicon glyphicon-plus-sign"></span> Add Job
+  <% end %>
+</button>
+
+<br>
+<br>
+
 
 <% @jobs.each do |job| %>
   <p>
+    <%= link_to edit_job_path(job), class: "btn btn-default edit" do %>
+      <span class="glyphicon glyphicon-edit"></span>
+    <% end %>
+
+    <%= link_to job_path(job), method: 'delete', class: "btn btn-default delete" do %>
+      <span class="glyphicon glyphicon-trash"></span>
+    <% end %>
+
     <%= link_to job.title, job_path(job) %> at <%= link_to job.company.name, company_path(job.company) %>
-    <%= link_to "Edit", edit_job_path(job) %>
-    <%= link_to "Delete", job_path(job), method: "delete" %>
   </p>
 <% end %>

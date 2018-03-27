@@ -39,4 +39,23 @@ describe 'User creates a new job' do
 
     expect(page).to have_content('Developer Created!')
   end
+
+  scenario 'creates a new job shows by icon link' do
+    Company.create!(name: 'Parasites Inc.')
+    Category.create!(name: 'Sanitation')
+
+    visit jobs_path
+    click_link('Add Job')
+
+    fill_in 'job[title]', with: 'Developer'
+    fill_in 'job[description]', with: 'So fun!'
+    fill_in 'job[level_of_interest]', with: 80
+    fill_in 'job[city]', with: 'Denver'
+    select 'Parasites Inc.', from: 'job[company_id]'
+    select 'Sanitation', from: 'job[category_id]'
+
+    click_button 'Create'
+
+    expect(page).to have_content('Developer Created!')
+  end
 end

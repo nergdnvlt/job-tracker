@@ -12,7 +12,7 @@ describe 'user visits nonexistent page' do
     it 'should have the nav bar' do
       visit '/barnacles'
 
-      expect(page).to have_link('Jobs')
+      expect(page).to have_link('Job Main')
       expect(page).to have_link('Companies')
       expect(page).to have_link('Categories')
       expect(page).to have_link('Home')
