@@ -87,6 +87,6 @@ class JobsController < ApplicationController
   end
 
   def job_by_interest
-    Job.where(level_of_interest: params[:interest].to_s)
+    Job.group_interests[params[:interest].to_i - 1]
   end
 end

@@ -118,8 +118,8 @@ describe 'user visits the dashboard' do
       visit '/dashboard'
 
       expect(page).to have_content('Jobs by Interest')
-      expect(page).to have_content('100: 2')
-      expect(page).to have_content('32: 1')
+      expect(page).to have_content('5 Star(s): 2')
+      expect(page).to have_content('2 Star(s): 1')
     end
   end
 
@@ -167,16 +167,16 @@ describe 'user visits the dashboard' do
                   company: company,
                   description: 'Supercalifragelisticexpialidociouse')
       Job.create!(title: 'QA',
-                  level_of_interest: 99,
+                  level_of_interest: 20,
                   city: 'Denver',
                   company: company,
                   description: 'Supercalifragelisticexpialidociouse')
 
       visit '/dashboard'
 
-      click_on '100'
+      click_on '5 Star(s):'
 
-      expect(current_url).to eq('http://www.example.com/jobs?interest=100')
+      expect(current_url).to eq('http://www.example.com/jobs?interest=5')
       expect(page).to have_content('Software at Bad Company')
       expect(page).to_not have_content('QA')
     end
