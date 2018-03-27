@@ -16,4 +16,15 @@ describe 'User can create a new category' do
 
     expect(page).to have_content('Reaper Category Added!')
   end
+
+  scenario 'a user creates a category from icon link' do
+    visit categories_path
+
+    click_link('Add Category')
+
+    fill_in 'category[name]', with: 'Reaper'
+    click_on 'Create Category'
+
+    expect(page).to have_content('Reaper Category Added!')
+  end
 end

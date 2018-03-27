@@ -20,4 +20,14 @@ describe 'User creates a new company' do
 
     expect(page).to have_content('ESPN Added!')
   end
+
+  scenario 'a user uses link to add company' do
+    visit companies_path
+
+    click_link('Add Company')
+    fill_in 'company[name]', with: 'ESPN'
+    click_button 'Create'
+    
+    expect(page).to have_content('ESPN Added!')
+  end
 end

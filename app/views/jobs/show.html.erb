@@ -1,29 +1,30 @@
 
 <br>
-<br>
-<p>Title: <%= @job.title %></p>
+<h2>Job: <%= @job.title %></h2>
 
-<p>Description: <%= @job.description %></p>
+  <p>Description: <%= @job.description %></p>
 
-<p>Level of Interest: <%= @job.level_of_interest %></p>
+  <p>Level of Interest: <%= @job.level_of_interest %></p>
 
-<p>City: <%= link_to @job.city, "/jobs?location=#{@job.city}" %></p>
+  <p>City: <%= link_to @job.city, "/jobs?location=#{@job.city}" %></p>
 
-<p>Company: <%= link_to @job.company.name, company_path(@job.company) %></p>
+  <p>Company: <%= link_to @job.company.name, company_path(@job.company) %></p>
 
-<p>
-  <%= link_to edit_job_path(@job), class: "btn btn-default edit" do %>
-    <span class="glyphicon glyphicon-edit"></span>
-  <% end %>
+  <p>
+    <%= link_to edit_job_path(@job), class: "btn btn-default edit" do %>
+      <span class="glyphicon glyphicon-edit"></span>
+    <% end %>
 
-  <%= link_to job_path(@job), method: 'delete', class: "btn btn-default delete" do %>
-    <span class="glyphicon glyphicon-trash"></span>
-  <% end %>
-</p>
+    <%= link_to job_path(@job), method: 'delete', class: "btn btn-default delete" do %>
+      <span class="glyphicon glyphicon-trash"></span>
+    <% end %>
+  </p>
 
 <br/>
 <br/>
+
 <h5>Add a note about this job:</h5>
+
 <%= render partial: "form_comment" %>
 
 

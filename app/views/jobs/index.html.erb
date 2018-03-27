@@ -1,4 +1,15 @@
-All Jobs
+<h2>All Jobs</h2>
+
+<br>
+
+<button class="btn btn-default btn-sm"> <%= link_to new_job_path class: "btn btn-default add" do %>
+    <span class="glyphicon glyphicon-plus-sign"></span> Add Job
+  <% end %>
+</button>
+
+<br>
+<br>
+
 
 <% @jobs.each do |job| %>
   <p>

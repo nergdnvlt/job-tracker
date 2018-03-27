@@ -1,4 +1,11 @@
-<h3>Companies</h3>
+<h2>Companies</h2>
+
+<button class="btn btn-default btn-sm"> <%= link_to new_company_path class: "btn btn-default add" do %>
+    <span class="glyphicon glyphicon-plus-sign"></span> Add Company
+  <% end %>
+</button>
+<br>
+<br>
 
 </div>
   <% @companies.each do |company| %>
