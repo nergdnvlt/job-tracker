@@ -1,11 +1,18 @@
 <h3>Companies</h3>
 
-<ul>
+</div>
   <% @companies.each do |company| %>
-    <li class=company_<%= company.id %>>
-      <%= link_to company.name, company_path(company) %>:
-      <%= link_to "Edit", edit_company_path(company) %>
-      <%= link_to "Delete", company_path(company), method: "delete" %>
-    </li>
+    <p class=company_<%= company.id %>>
+
+      <%= link_to edit_company_path(company), class: "btn btn-default edit" do %>
+        <span class="glyphicon glyphicon-edit"></span>
+      <% end %>
+
+      <%= link_to company_path(company), method: 'delete', class: "btn btn-default delete" do %>
+        <span class="glyphicon glyphicon-trash"></span>
+      <% end %>
+
+      <%= link_to company.name, company_path(company) %>
+    </p>
   <% end %>
-</ul>
+</div>
