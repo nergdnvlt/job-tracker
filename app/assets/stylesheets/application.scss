@@ -33,6 +33,25 @@ body {
   margin-bottom: 40px;
 }
 
+.contact-card {
+  border: 2px solid #31478B;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 10px;
+  width: 73%
+}
+
+.contact-card p {
+  padding: 2px;
+  padding-left: 10px;
+}
+
+.contact-top {
+  margin-top: 10px;
+}
+
 .comment-card {
   align-items: center;
   border: 2px solid #31478B;
@@ -60,7 +79,7 @@ body {
   text-align: center;
 }
 
-.job {
+.format {
   margin-left: 20%;
   margin-top: 40px;
 }
