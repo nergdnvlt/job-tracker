@@ -135,7 +135,7 @@ describe Job do
                    category: category)
 
 
-        expect(Job.group_location).to eq([['Colorado Springs', 1], ['Denver', 3]])
+        expect(Job.group_location).to eq({'Colorado Springs'=>1, 'Denver'=>3})
       end
     end
 

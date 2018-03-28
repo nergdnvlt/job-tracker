@@ -5,9 +5,10 @@ class Job < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   def self.group_location
-    cities = distinct.order(:city).pluck(:city)
-
-    cities.map{ |city| [city, where(city: city).size] }
+    order(:city)
+      .distinct(:city)
+      .group(:city)
+      .count
   end
 
   def self.group_interests
