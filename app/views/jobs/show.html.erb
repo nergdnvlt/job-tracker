@@ -9,7 +9,7 @@
 
   <p>Company: <%= link_to @job.company.name, company_path(@job.company) %></p>
 
-    <p>Category: <%= link_to @job.category.name, category_path(@job.category) %></p>
+  <p>Category: <%= link_to @job.category.name, category_path(@job.category) %></p>
 
     <p>
       <%= link_to edit_job_path(@job), class: "btn btn-default edit" do %>
