@@ -1,21 +1,21 @@
 <%= form_for @job do |f| %>
   <%= f.label :title %><br/>
   <%= f.text_field :title %><br/>
-
+  <br>
   <%= f.label :company %></br>
   <%= f.collection_select :company_id, Company.order(:name), :id, :name %></br>
-
+  <br>
   <%= f.label :category %><br/>
   <%= f.collection_select :category_id, Category.order(:name), :id, :name %><br/>
-
+  <br>
   <%= f.label :description %><br/>
   <%= f.text_field :description %><br/>
-
+  <br>
   <%= f.label :level_of_interest %><br/>
   <%= f.number_field :level_of_interest %><br/>
-
+  <br>
   <%= f.label :city %><br/>
   <%= f.text_field :city %><br/>
-
+  <br>
   <%= f.submit %>
 <% end %>

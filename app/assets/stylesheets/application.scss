@@ -2,6 +2,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+a {
+  color: #31478B;
+  margin: 5px;
+}
+
+body {
+  font-family: helvetica;
+}
+
 .background-img {
   background-image: url("background.jpg");
   background-repeat: no-repeat;
@@ -10,18 +19,83 @@
   width: 100%;
 }
 
-.category_cont {
-  margin-left: 25%;
+.cat-inner h4 {
+  display: inline-block;
+}
+
+.index {
+  margin-left: 33%;
   text-align: left;
 }
 
-.category_cont h2 {
+.format h2 {
   margin-top: 40px;
   margin-bottom: 40px;
 }
 
-.cat-inner h4 {
+.contact-card {
+  border: 2px solid #31478B;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 10px;
+  width: 73%
+}
+
+.contact-card p {
+  padding: 2px;
+  padding-left: 10px;
+}
+
+.contact-top {
+  margin-top: 10px;
+}
+
+.comment-card {
+  align-items: center;
+  border: 2px solid #31478B;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+.comments {
+  margin-bottom: 30px;
+  margin-right: 10%;
+}
+
+.comment-form {
+  margin-right: 10%;
+  padding: 5px;
+}
+
+.comment-card {
+  margin-right: 10%;
+  margin-top: 5px;
+  padding: 3px;
+}
+
+.comment-card p {
+  text-align: center;
+}
+
+.format {
+  margin-left: 20%;
+  margin-top: 40px;
+}
+
+.job-card {
   display: inline-block;
+  height: 50%;
+  width: 60%;
+}
+
+.job-new-h2 {
+  margin-top: 60px;
+}
+
+.job-edit-h2 {
+  margin-top: 60px;
 }
 
 #main-nav {
@@ -33,9 +107,4 @@
   font-weight: bold;
   font-size: 20px;
   overflow: hidden;
-}
-
-a {
-  color: #31478B;
-  margin: 5px;
 }

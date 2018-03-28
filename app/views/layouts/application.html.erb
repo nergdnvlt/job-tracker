@@ -33,15 +33,15 @@
             <span class="glyphicon glyphicon-list-alt"></span> &nbsp; Job Main
           <% end %>
         </button>
-        <!-- <%= link_to 'Categories', categories_path %> -->
-        <!-- <%= link_to 'Companies', companies_path %> -->
-        <!-- <%= link_to 'Jobs', jobs_path %> -->
       </nav>
-    </header>
 
-    <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, class: name %>
-    <% end %>
+    </header>
+    <div>
+      <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: name %>
+      <% end %>
+    </div>
+
     <%= yield %>
 
   </body>
