@@ -1,4 +1,4 @@
-<div class="job-show">
+<div class="job">
   <div class="job-card">
     <h2 class="job-show-h">Job: <%= @job.title %></h2>
     <p>Description: <%= @job.description %></p>
@@ -29,7 +29,7 @@
     <div class="comment-form">
       <%= render partial: "form_comment" %>
     </div>
-      <% @comments.each do |comment| %><div class="comment-card">
+      <% @job.comments.order(updated_at: :desc).each do |comment| %><div class="comment-card">
         <p>Date: <%= comment.created_at %> Comment: <%= comment.content %></p>
       </div><% end %>
   </div>
