@@ -9,15 +9,17 @@
 
   <p>Company: <%= link_to @job.company.name, company_path(@job.company) %></p>
 
-  <p>
-    <%= link_to edit_job_path(@job), class: "btn btn-default edit" do %>
-      <span class="glyphicon glyphicon-edit"></span>
-    <% end %>
+    <p>Category: <%= link_to @job.category.name, category_path(@job.category) %></p>
 
-    <%= link_to job_path(@job), method: 'delete', class: "btn btn-default delete" do %>
-      <span class="glyphicon glyphicon-trash"></span>
-    <% end %>
-  </p>
+    <p>
+      <%= link_to edit_job_path(@job), class: "btn btn-default edit" do %>
+        <span class="glyphicon glyphicon-edit"></span>
+      <% end %>
+
+      <%= link_to job_path(@job), method: 'delete', class: "btn btn-default delete" do %>
+        <span class="glyphicon glyphicon-trash"></span>
+      <% end %>
+    </p>
 </div>
 
 <br/>
