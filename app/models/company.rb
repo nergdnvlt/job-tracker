@@ -6,7 +6,7 @@ class Company < ApplicationRecord
   def self.top_interests
     joins(:jobs)
     .group(:id)
-    .order("avg(level_of_interest) DESC")
+    .order('avg(level_of_interest) DESC')
     .limit(3)
   end
 

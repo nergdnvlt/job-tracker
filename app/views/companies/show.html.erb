@@ -1,4 +1,10 @@
 <div class="format">
+  <h2>All Jobs for <strong><%= @company.name %></strong></h2>
+
+  <% @company.jobs.each do |job| %>
+    <%= job.title %>
+  <% end %>
+
   <h2>All Contacts for <strong><%= @company.name %></strong></h2>
 
   <br>
@@ -22,4 +28,7 @@
     <% end %>
   </div>
 
-</div>
+
+
+
+
