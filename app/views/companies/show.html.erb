@@ -1,17 +1,14 @@
 <div class="format">
   <h2>All Jobs for <strong><%= @company.name %></strong></h2>
 
-  <% @company.jobs.each do |job| %>
-    <%= job.title %>
+  <% @company.jobs.order(:title).each do |job| %>
+    <p><%= link_to job.title, job_path(job) %></p>
   <% end %>
 
   <h2>All Contacts for <strong><%= @company.name %></strong></h2>
 
-  <br>
   <h3>Add a Contact</h3>
   <%= render partial: "form_contact" %>
-
-  <br>
   <br>
 
     <% @company.contacts.each do |contact| %>
@@ -27,8 +24,3 @@
           <% end %></p>
     <% end %>
   </div>
-
-
-
-
-
