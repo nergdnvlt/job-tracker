@@ -12,12 +12,13 @@ describe 'User sees a specific job' do
 
     visit job_path(job)
 
-    expect(current_path).to eq(job_path(Job.last.id))
-    expect(page).to have_content(Job.last.company.name)
-    expect(page).to have_content(Job.last.description)
-    expect(page).to have_content(Job.last.level_of_interest)
-    expect(page).to have_content(Job.last.title)
-    expect(page).to have_content(Job.last.city)
+
+    expect(current_path).to eq(job_path(job.id))
+    expect(page).to have_content(job.company.name)
+    expect(page).to have_content(job.description)
+    expect(page).to have_content(job.level_of_interest)
+    expect(page).to have_content(job.title)
+    expect(page).to have_content(job.city)
   end
 
   describe 'a user sees the comments for that job' do

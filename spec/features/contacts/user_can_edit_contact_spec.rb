@@ -11,9 +11,10 @@ describe 'editing a contact' do
 
       visit company_path(company)
 
-      expect(page).to have_content('Rango')
-      expect(page).to have_content('rango@parasites.inc.com')
-      expect(page).to have_content('Sanitation Engineer')
+      expect(page).to have_content(contact.name)
+      expect(page).to have_content(contact.email)
+      expect(page).to have_content(contact.position)
+      expect(page).to have_content(company.name)
 
       find('.edit').click
 
@@ -40,9 +41,9 @@ describe 'editing a contact' do
 
       visit company_path(company)
 
-      expect(page).to have_content('Rango')
-      expect(page).to have_content('rango@parasites.inc.com')
-      expect(page).to have_content('Sanitation Engineer')
+      expect(page).to have_content(contact.name)
+      expect(page).to have_content(contact.email)
+      expect(page).to have_content(company.name)
 
       find('.edit').click
 

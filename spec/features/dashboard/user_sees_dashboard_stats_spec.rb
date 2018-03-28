@@ -3,50 +3,49 @@ require 'rails_helper'
 describe 'user visits the dashboard' do
   describe 'they see' do
     it 'top three companies' do
-      company_1 = Company.create!(name: 'Parasites Inc.')
-      company_2 = Company.create!(name: 'Wayne Enterprises')
-      company_3 = Company.create!(name: 'Cap Corp')
-      company_4 = Company.create!(name: 'Bad Company')
+      company1 = Company.create!(name: 'Parasites Inc.')
+      company2 = Company.create!(name: 'Wayne Enterprises')
+      company3 = Company.create!(name: 'Cap Corp')
+      company4 = Company.create!(name: 'Bad Company')
 
       Job.create!(title: 'Software',
                   level_of_interest: 100,
                   city: 'Denver',
-                  company: company_1,
+                  company: company1,
                   description: 'A')
       Job.create!(title: 'Something',
                   level_of_interest: 90,
                   city: 'Denver',
-                  company: company_1,
+                  company: company1,
                   description: 'Really')
       Job.create!(title: 'Tasty',
                   level_of_interest: 80,
                   city: 'Denver',
-                  company: company_2,
+                  company: company2,
                   description: 'Nice')
       Job.create!(title: 'Jam',
                   level_of_interest: 70,
                   city: 'Denver',
-                  company: company_2,
+                  company: company2,
                   description: 'Description')
       Job.create!(title: 'Barn',
                   level_of_interest: 74,
                   city: 'Denver',
-                  company: company_3,
+                  company: company3,
                   description: 'Dude')
       Job.create!(title: 'Alpine',
                   level_of_interest: 31,
                   city: 'Downtown',
-                  company: company_4,
+                  company: company4,
                   description: 'Bad')
-
 
       visit '/dashboard'
 
       expect(page).to have_content('The Big Three')
-      expect(page).to have_content(company_1.name)
-      expect(page).to have_content(company_2.name)
-      expect(page).to have_content(company_3.name)
-      expect(page).to_not have_content(company_4.name)
+      expect(page).to have_content(company1.name)
+      expect(page).to have_content(company2.name)
+      expect(page).to have_content(company3.name)
+      expect(page).to_not have_content(company4.name)
       expect(page).to have_content('95')
       expect(page).to have_content('75')
       expect(page).to have_content('74')
@@ -54,40 +53,40 @@ describe 'user visits the dashboard' do
     end
 
     it 'shows all present locations' do
-      company_1 = Company.create!(name: 'Parasites Inc.')
-      company_2 = Company.create!(name: 'Wayne Enterprises')
-      company_3 = Company.create!(name: 'Cap Corp')
-      company_4 = Company.create!(name: 'Bad Company')
+      company1 = Company.create!(name: 'Parasites Inc.')
+      company2 = Company.create!(name: 'Wayne Enterprises')
+      company3 = Company.create!(name: 'Cap Corp')
+      company4 = Company.create!(name: 'Bad Company')
 
       Job.create!(title: 'Software',
                   level_of_interest: 100,
                   city: 'Los Angeles',
-                  company: company_1,
+                  company: company1,
                   description: 'A')
       Job.create!(title: 'Something',
                   level_of_interest: 90,
                   city: 'Denver',
-                  company: company_1,
+                  company: company1,
                   description: 'Really')
       Job.create!(title: 'Tasty',
                   level_of_interest: 80,
                   city: 'Denver',
-                  company: company_2,
+                  company: company2,
                   description: 'Nice')
       Job.create!(title: 'Jam',
                   level_of_interest: 70,
                   city: 'Denver',
-                  company: company_2,
+                  company: company2,
                   description: 'Description')
       Job.create!(title: 'Barn',
                   level_of_interest: 74,
                   city: 'Denver',
-                  company: company_3,
+                  company: company3,
                   description: 'Dude')
       Job.create!(title: 'Alpine',
                   level_of_interest: 31,
                   city: 'Downtown',
-                  company: company_4,
+                  company: company4,
                   description: 'Bad')
 
       visit '/dashboard'
