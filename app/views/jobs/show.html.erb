@@ -29,6 +29,6 @@
 
 
 <h5>Comments:</h5>
-<% @comments.each do |comment| %>
+<% @job.comments.order(updated_at: :desc).each do |comment| %>
   <p>Date: <%= comment.created_at %> Comment: <%= comment.content %></p>
 <% end %>
