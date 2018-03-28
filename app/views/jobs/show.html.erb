@@ -1,14 +1,13 @@
-<div class="format">
-  <h2>Job: <%= @job.title %></h2>
-  <div class="job-card">
+<h2>Job: <%= @job.title %></h2>
+<div class="job-card">
 
-    <p>Description: <%= @job.description %></p>
+  <p>Description: <%= @job.description %></p>
 
-    <p>Level of Interest: <%= @job.level_of_interest %></p>
+  <p>Level of Interest: <%= @job.level_of_interest %></p>
 
-    <p>City: <%= link_to @job.city, "/jobs?location=#{@job.city}" %></p>
+  <p>City: <%= link_to @job.city, "/jobs?location=#{@job.city}" %></p>
 
-    <p>Company: <%= link_to @job.company.name, company_path(@job.company) %></p>
+  <p>Company: <%= link_to @job.company.name, company_path(@job.company) %></p>
 
     <p>Category: <%= link_to @job.category.name, category_path(@job.category) %></p>
 
@@ -21,19 +20,18 @@
         <span class="glyphicon glyphicon-trash"></span>
       <% end %>
     </p>
+</div>
+
+<br/>
+<br/>
+
+<div class="comments">
+  <h4 class="job-show-h">Add a note about this job:</h4>
+
+  <div class="comment-form">
+    <%= render partial: "form_comment" %>
   </div>
-
-  <br/>
-  <br/>
-
-  <div class="comments">
-    <h4 class="job-show-h">Add a note about this job:</h4>
-
-    <div class="comment-form">
-      <%= render partial: "form_comment" %>
-    </div>
-      <% @job.comments.order(updated_at: :desc).each do |comment| %><div class="comment-card">
-        <p>Date: <%= comment.created_at %> Comment: <%= comment.content %></p>
-      </div><% end %>
-  </div>
+    <% @job.comments.order(updated_at: :desc).each do |comment| %><div class="comment-card">
+      <p>Date: <%= comment.created_at %> Comment: <%= comment.content %></p>
+    </div><% end %>
 </div>
