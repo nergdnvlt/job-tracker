@@ -1,26 +1,25 @@
-<div class="format">
-  <h2>All Jobs for <strong><%= @company.name %></strong></h2>
 
-  <% @company.jobs.order(:title).each do |job| %>
-    <p><%= link_to job.title, job_path(job) %></p>
+<h2>All Jobs for <strong><%= @company.name %></strong></h2>
+
+<% @company.jobs.order(:title).each do |job| %>
+  <p><%= link_to job.title, job_path(job) %></p>
+<% end %>
+
+<h2>All Contacts for <strong><%= @company.name %></strong></h2>
+
+<h3>Add a Contact</h3>
+<%= render partial: "form_contact" %>
+<br>
+
+  <% @company.contacts.each do |contact| %>
+  <div class="contact-card">
+    <p class="contact-top">Name: <%= contact.name %></p>
+    <p>Email: <%= contact.email %></p>
+    <p>Position: <%= contact.position %></p>
+    <p><%= link_to edit_company_contact_path(contact.company, contact), class: "btn btn-default edit" do %>
+        <span class="glyphicon glyphicon-edit"></span>
+        <% end %>
+        <%= link_to "/companies/#{contact.company.id}/contacts/#{contact.id}", method: 'delete', class: "btn btn-default delete" do %>
+          <span class="glyphicon glyphicon-trash"></span>
+        <% end %></p>
   <% end %>
-
-  <h2>All Contacts for <strong><%= @company.name %></strong></h2>
-
-  <h3>Add a Contact</h3>
-  <%= render partial: "form_contact" %>
-  <br>
-
-    <% @company.contacts.each do |contact| %>
-    <div class="contact-card">
-      <p class="contact-top">Name: <%= contact.name %></p>
-      <p>Email: <%= contact.email %></p>
-      <p>Position: <%= contact.position %></p>
-      <p><%= link_to edit_company_contact_path(contact.company, contact), class: "btn btn-default edit" do %>
-          <span class="glyphicon glyphicon-edit"></span>
-          <% end %>
-          <%= link_to "/companies/#{contact.company.id}/contacts/#{contact.id}", method: 'delete', class: "btn btn-default delete" do %>
-            <span class="glyphicon glyphicon-trash"></span>
-          <% end %></p>
-    <% end %>
-  </div>
