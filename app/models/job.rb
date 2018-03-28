@@ -5,15 +5,17 @@ class Job < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   def self.group_location
-    cities = distinct.order(:city).pluck(:city)
-
-    cities.map{ |city| [city, where(city: city).size] }
+    order(:city)
+      .distinct(:city)
+      .group(:city)
+      .count
   end
 
   def self.group_interests
-    select(:level_of_interest)
-      .group(:level_of_interest)
-      .order(level_of_interest: :desc)
-      .count
+    [where(level_of_interest: 0..19),
+     where(level_of_interest: 20..39),
+     where(level_of_interest: 40..59),
+     where(level_of_interest: 60..79),
+     where(level_of_interest: 80..100)]
   end
 end
