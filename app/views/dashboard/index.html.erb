@@ -1,49 +1,55 @@
-<div class="container">
-  <div class="page-header">
-    <h3>The Big Three</h3>
-  </div>
+<div class="format">
+  <div class="container">
+    <div class="page-header">
+      <h3>The Big Three</h3>
+    </div>
 
-  <div class="jumbotron">
-    <div class="row">
-    <% @companies.each do |company| %>
-      <div class="col-lg-3"><%= link_to company.name, "/companies/#{company.id}" %>
-      <%= company.average_interest %></div>
-    <% end %>
+    <div class="jumbotron">
+      <div class="row">
+      <% @companies.each do |company| %>
+        <div class="col-lg-3"><%= link_to company.name, "/companies/#{company.id}" %>
+          <%= company.average_interest %>
+        </div>
+      <% end %>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="container">
-  <div class="page-header">
-    <h3>Jobs by Interest</h3>
+  <div class="container">
+    <div class="page-header">
+      <h3>Jobs by Interest</h3>
+    </div>
   </div>
-</div>
 
-<div class="container">
-  <%= link_to 'Sort Jobs by Interest Level', "/jobs?sort=interest" %>
-</div>
+  <div class="container">
+    <%= link_to 'Sort Jobs by Interest Level', "/jobs?sort=interest" %>
+  </div>
 
-<ul class="nav nav-link nav-stacked">
-  <% @interests.each_with_index do |interest, index| %>
+  <ul class="nav nav-link nav-stacked">
+    <% @interests.each_with_index do |interest, index| %>
 
-    <li class="container active">
-      <%= link_to "#{index + 1} Star(s): #{interest.size}", "jobs?interest=#{index + 1}" %>
-    </li>
+      <div class="container active">
+        <%= link_to "#{index + 1} Star(s): #{interest.size}", "jobs?interest=#{index + 1}" %>
+      </div>
 
-  <% end %>
-</ul>
+    <% end %>
+  </ul>
 
-<div class="container">
-  <h3 class="page-header">Jobs in City</h3>
-
+  <div class="container">
+    <h3 class="page-header">Jobs in City</h3>
+  </div>
 
   <div class="container">
     <%= link_to 'See All Jobs by Cities', "/jobs?sort=city" %>
   </div>
-</div>
 
-<ul class="nav nav-link nav-stacked">
-  <% @jobs.each do |city, quantity| %>
-  <li class="container active"> <%= link_to "#{city}: #{quantity}", "/jobs?location=#{city}" %></li>
-  <% end %>
-</ul>
+  <ul class="nav nav-link nav-stacked">
+    <% @jobs.each do |city, quantity| %>
+
+    <div class="container active">
+      <%= link_to "#{city}: #{quantity}", "/jobs?location=#{city}" %>
+    </div>
+
+    <% end %>
+  </ul>
+</div>
