@@ -1,2 +1,4 @@
-<h2>Category: <%= @category.name %></h2>
-<%= link_to 'Show Jobs For This Category', "/jobs?category=#{@category.name}" %>
+<div class="cat-show">
+  <h2>Category: <%= @category.name %></h2>
+  <%= link_to 'Show Jobs For This Category', "/jobs?category=#{@category.name}" %>
+</div>
